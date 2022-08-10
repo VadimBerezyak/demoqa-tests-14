@@ -8,19 +8,20 @@ import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class RegistrationFormPage {
-    //Elements
+
     private SelenideElement firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
             userEmailInput = $("#firstName"),
             userGenderInput = $("#genterWrapper"),
             userNumberInput = $("#userNumber");
 
-    //Actions
-    public void openPage() {
+
+    public RegistrationFormPage openPage() {
         open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
         executeJavaScript("$('footer').remove()");
         executeJavaScript("$('#fixedban').remove()");
+        return this;
     }
 
     public RegistrationFormPage setFirstName(String value) {

@@ -21,12 +21,12 @@ public class RegistrationFormWithPageObjectsTests {
 
     @Test
     void fillFormTest() {
-        registrationFormPage.openPage();
-        registrationFormPage.setFirstName("Alex");
-        registrationFormPage.setLastName("Egorov");
-        registrationFormPage.setUserEmail("AlexEgorov@mail.com");
-        registrationFormPage.setUserGender("other");
-        registrationFormPage.setUserNumber("1234567890");
+        registrationFormPage.openPage()
+                .setFirstName("Alex")
+                .setLastName("Egorov")
+                .setUserEmail("AlexEgorov@mail.com")
+                .setUserGender("Other")
+                .setUserNumber("1234567890");
 
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption("July");
@@ -50,18 +50,18 @@ public class RegistrationFormWithPageObjectsTests {
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
 
         $(".table-responsive table").shouldHave(text("Alex"), text("Egorov"),
-                text("alex@egorov.com"), text("1234567890"));
+                text("AlexEgorov@mail.com"), text("1234567890"));
     }
-@Test
-    void fillFormWithMinimumDataFormTest() {
-    registrationFormPage.openPage();
 
-        $("#firstName").setValue("Alex");
-        $("#lastName").setValue("Egorov");
-        $("#userEmail").setValue("alex@egorov.com");
-        $("#genterWrapper").$(byText("Other")).click(); // best
+    @Test
+    void fillFormWithMinimumDataFormTest() {
+        registrationFormPage.openPage()
+                .setFirstName("Alex")
+                .setLastName("Egorov")
+                .setUserGender("Other");
+
+
         $("#userNumber").setValue("1234567890");
-        $("#dateOfBirthInput").click();
         $("#submit").click();
 
         $(".modal-dialog").should(appear);
