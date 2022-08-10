@@ -58,10 +58,9 @@ public class RegistrationFormWithPageObjectsTests {
         registrationFormPage.openPage()
                 .setFirstName("Alex")
                 .setLastName("Egorov")
-                .setUserGender("Other");
+                .setUserGender("Other")
+                .setUserNumber("1234567890");
 
-
-        $("#userNumber").setValue("1234567890");
         $("#submit").click();
 
         $(".modal-dialog").should(appear);
