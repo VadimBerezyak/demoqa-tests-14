@@ -56,6 +56,23 @@ public class RegistrationFormPage {
         $("#userNumber").setValue(value);
         return this;
     }
+       public RegistrationFormPage setUserSubject(String value) {
+        $("#subjectsInput").setValue(value).pressEnter();
+        return this;
+    }
+         public RegistrationFormPage setUserHobbies(String value) {
+             $("#hobbiesWrapper").$(byText(value)).click();
+             return this;
+    }
+     public RegistrationFormPage uploadUserPicture(String value) {
+         $("#uploadPicture").uploadFromClasspath(value);
+             return this;
+    }
+      public RegistrationFormPage setUserCurrentAddress(String value) {
+          $("#currentAddress").setValue(value);
+          return this;
+    }
+
  public RegistrationFormPage setBirthDate(String day,String month, String year ) {
      $("#dateOfBirthInput").click();
      calendarCompanent.setDate(day, month, year);

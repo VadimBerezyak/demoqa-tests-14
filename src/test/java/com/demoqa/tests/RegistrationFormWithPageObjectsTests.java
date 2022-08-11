@@ -27,13 +27,11 @@ public class RegistrationFormWithPageObjectsTests {
                 .setUserEmail("AlexEgorov@mail.com")
                 .setUserGender("Other")
                 .setUserNumber("1234567890")
-                .setBirthDate("30", "December", "2000");
-
-        $("#subjectsInput").setValue("Math").pressEnter();
-        $("#hobbiesWrapper").$(byText("Sports")).click(); // best
-
-        $("#uploadPicture").uploadFromClasspath("img/1.png");
-        $("#currentAddress").setValue("Some address 1");
+                .setBirthDate("30", "December", "2000")
+                .setUserSubject("Math")
+                .setUserHobbies("Sports")
+                .uploadUserPicture("img/1.png")
+                .setUserCurrentAddress("Some address 1");
 
         $("#state").click();
         $("#stateCity-wrapper").$(byText("NCR")).click();
