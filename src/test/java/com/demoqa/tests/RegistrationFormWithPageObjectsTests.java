@@ -28,7 +28,7 @@ public class RegistrationFormWithPageObjectsTests {
                 .setUserGender("Other")
                 .setUserNumber("1234567890")
                 .setBirthDate("30", "December", "2000");
-        
+
         $("#subjectsInput").setValue("Math").pressEnter();
         $("#hobbiesWrapper").$(byText("Sports")).click(); // best
 

@@ -1,6 +1,7 @@
 package com.demoqa.pages;
 
 import com.codeborne.selenide.SelenideElement;
+import com.demoqa.pages.components.CalendarCompanent;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -8,6 +9,8 @@ import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class RegistrationFormPage {
+
+    private CalendarCompanent calendarCompanent =  new CalendarCompanent();
 
     private SelenideElement firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
@@ -55,10 +58,8 @@ public class RegistrationFormPage {
     }
  public RegistrationFormPage setBirthDate(String day,String month, String year ) {
      $("#dateOfBirthInput").click();
-     $(".react-datepicker__month-select").selectOption(month);
-     $(".react-datepicker__year-select").selectOption(year);
-     $(".react-datepicker__day--0" + day+ ":not(.react-datepicker__day--outside-month)").click();
-     return this;
+     calendarCompanent.setDate(day, month, year);
+     return  this;
     }
 
 
