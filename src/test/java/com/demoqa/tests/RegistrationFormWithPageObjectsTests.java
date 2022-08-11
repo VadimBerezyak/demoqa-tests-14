@@ -26,13 +26,9 @@ public class RegistrationFormWithPageObjectsTests {
                 .setLastName("Egorov")
                 .setUserEmail("AlexEgorov@mail.com")
                 .setUserGender("Other")
-                .setUserNumber("1234567890");
-
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").selectOption("July");
-        $(".react-datepicker__year-select").selectOption("2008");
-        $(".react-datepicker__day--030:not(.react-datepicker__day--outside-month)").click();
-
+                .setUserNumber("1234567890")
+                .setBirthDate("30", "December", "2000");
+        
         $("#subjectsInput").setValue("Math").pressEnter();
         $("#hobbiesWrapper").$(byText("Sports")).click(); // best
 
