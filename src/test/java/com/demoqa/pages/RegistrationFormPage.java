@@ -3,6 +3,8 @@ package com.demoqa.pages;
 import com.codeborne.selenide.SelenideElement;
 import com.demoqa.pages.components.CalendarCompanent;
 
+import java.awt.desktop.UserSessionEvent;
+
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -10,13 +12,18 @@ import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class RegistrationFormPage {
 
-    private CalendarCompanent calendarCompanent =  new CalendarCompanent();
+    private CalendarCompanent calendarCompanent = new CalendarCompanent();
 
     private SelenideElement firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
             userEmailInput = $("#firstName"),
             userGenderInput = $("#genterWrapper"),
-            userNumberInput = $("#userNumber");
+            userNumberInput = $("#userNumber"),
+            userSubjectInput = $("#subjectsInput"),
+            userHobbiesInput = $("#hobbiesWrapper"),
+            userPictureInput = $("#uploadPicture"),
+            userCurrentAddressInput =  $("#currentAddress");
+
 
 
     public RegistrationFormPage openPage() {
@@ -53,30 +60,34 @@ public class RegistrationFormPage {
     }
 
     public RegistrationFormPage setUserNumber(String value) {
-        $("#userNumber").setValue(value);
+        userNumberInput.setValue(value);
         return this;
-    }
-       public RegistrationFormPage setUserSubject(String value) {
-        $("#subjectsInput").setValue(value).pressEnter();
-        return this;
-    }
-         public RegistrationFormPage setUserHobbies(String value) {
-             $("#hobbiesWrapper").$(byText(value)).click();
-             return this;
-    }
-     public RegistrationFormPage uploadUserPicture(String value) {
-         $("#uploadPicture").uploadFromClasspath(value);
-             return this;
-    }
-      public RegistrationFormPage setUserCurrentAddress(String value) {
-          $("#currentAddress").setValue(value);
-          return this;
     }
 
- public RegistrationFormPage setBirthDate(String day,String month, String year ) {
-     $("#dateOfBirthInput").click();
-     calendarCompanent.setDate(day, month, year);
-     return  this;
+    public RegistrationFormPage setUserSubject(String value) {
+        userSubjectInput.setValue(value).pressEnter();
+        return this;
+    }
+
+    public RegistrationFormPage setUserHobbies(String value) {
+        userHobbiesInput.$(byText(value)).click();
+        return this;
+    }
+
+    public RegistrationFormPage uploadUserPicture(String value) {
+        userPictureInput.uploadFromClasspath(value);
+        return this;
+    }
+
+    public RegistrationFormPage setUserCurrentAddress(String value) {
+       userCurrentAddressInput.setValue(value);
+        return this;
+    }
+
+    public RegistrationFormPage setBirthDate(String day, String month, String year) {
+        $("#dateOfBirthInput").click();
+        calendarCompanent.setDate(day, month, year);
+        return this;
     }
 
 
