@@ -25,10 +25,10 @@ public class RegistrationFormPage {
             userHobbiesInput = $("#hobbiesWrapper"),
             userPictureInput = $("#uploadPicture"),
             userCurrentAddressInput = $("#currentAddress"),
-            userStateInput = $("#state"),
-            userStateCity = $("#stateCity-wrapper"),
-            userCity = $("#city"),
-            submitButton = $("#submit");
+    //            userStateInput = $("#state"),
+//            userStateCity = $("#stateCity-wrapper"),
+//            userCity = $("#city"),
+    submitButton = $("#submit");
 
     private static final String TITLE_TEXT = "Student Registration Form";
 
@@ -116,8 +116,6 @@ public class RegistrationFormPage {
         resultsTableComponent.checkResult(key, value);
         return this;
     }
-
-
 
 }
 

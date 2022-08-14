@@ -18,7 +18,5 @@ public class ResultsTableComponent {
                 .parent().shouldHave(text(value));
                 return this;
     }
-
-
 }
 

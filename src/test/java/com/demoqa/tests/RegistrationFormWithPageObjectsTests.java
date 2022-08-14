@@ -6,9 +6,6 @@ import com.demoqa.pages.components.ResultsTableComponent;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.*;
-
 public class RegistrationFormWithPageObjectsTests {
     RegistrationFormPage registrationFormPage = new RegistrationFormPage();
     ResultsTableComponent resultsTableComponent = new ResultsTableComponent();
@@ -45,10 +42,6 @@ public class RegistrationFormWithPageObjectsTests {
                 .checkResultsInTable("Picture", "1.png")
                 .checkResultsInTable("Address", "Some address 1")
                 .checkResultsInTable("State and City", "NCR Delhi");
-
-
-        $(".table-responsive table").shouldHave(text("Alex"), text("Egorov"),
-                text("AlexEgorov@mail.com"), text("1234567890"));
     }
 
     @Test
