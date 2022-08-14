@@ -31,14 +31,10 @@ public class RegistrationFormWithPageObjectsTests {
                 .setUserSubject("Math")
                 .setUserHobbies("Sports")
                 .uploadUserPicture("img/1.png")
-                .setUserCurrentAddress("Some address 1");
-
-        $("#state").click();
-        $("#stateCity-wrapper").$(byText("NCR")).click();
-        $("#city").click();
-        $("#stateCity-wrapper").$(byText("Delhi")).click();
-
-        $("#submit").click();
+                .setUserCurrentAddress("Some address 1")
+                .setUserState("NCR")
+                .setUserCity("Delhi")
+                .submitForm();
 
         $(".modal-dialog").should(appear);
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
@@ -53,9 +49,8 @@ public class RegistrationFormWithPageObjectsTests {
                 .setFirstName("Alex")
                 .setLastName("Egorov")
                 .setUserGender("Other")
-                .setUserNumber("1234567890");
-
-        $("#submit").click();
+                .setUserNumber("1234567890")
+                .submitForm();
 
         $(".modal-dialog").should(appear);
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));

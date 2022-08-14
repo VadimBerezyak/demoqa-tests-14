@@ -1,9 +1,7 @@
 package com.demoqa.pages;
 
 import com.codeborne.selenide.SelenideElement;
-import com.demoqa.pages.components.CalendarCompanent;
-
-import java.awt.desktop.UserSessionEvent;
+import com.demoqa.pages.components.CalendarComponent;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -12,7 +10,7 @@ import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class RegistrationFormPage {
 
-    private CalendarCompanent calendarCompanent = new CalendarCompanent();
+    private CalendarComponent calendarCompanent = new CalendarComponent();
 
     private SelenideElement firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
@@ -22,7 +20,11 @@ public class RegistrationFormPage {
             userSubjectInput = $("#subjectsInput"),
             userHobbiesInput = $("#hobbiesWrapper"),
             userPictureInput = $("#uploadPicture"),
-            userCurrentAddressInput =  $("#currentAddress");
+            userCurrentAddressInput =  $("#currentAddress"),
+            userStateInput = $("#state"),
+            userStateCity = $("#stateCity-wrapper"),
+            userCity = $("#city"),
+            submitButton = $("#submit");
 
 
 
@@ -88,6 +90,23 @@ public class RegistrationFormPage {
         $("#dateOfBirthInput").click();
         calendarCompanent.setDate(day, month, year);
         return this;
+    }
+
+   public RegistrationFormPage setUserState(String value) {
+       userStateInput.click();
+       userStateCity.$(byText(value)).click();
+        return this;
+    }
+
+  public RegistrationFormPage setUserCity(String value) {
+      userCity.click();
+       userStateCity.$(byText(value)).click();
+        return this;
+    }
+
+  public RegistrationFormPage submitForm() {
+      submitButton.click();
+      return this;
     }
 
 
