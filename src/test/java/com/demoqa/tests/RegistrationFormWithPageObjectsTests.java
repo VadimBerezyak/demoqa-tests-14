@@ -2,16 +2,16 @@ package com.demoqa.tests;
 
 import com.codeborne.selenide.Configuration;
 import com.demoqa.pages.RegistrationFormPage;
+import com.demoqa.pages.components.ResultsTableComponent;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationFormWithPageObjectsTests {
     RegistrationFormPage registrationFormPage = new RegistrationFormPage();
+    ResultsTableComponent resultsTableComponent = new ResultsTableComponent();
 
     @BeforeAll
     static void configure() {
@@ -33,10 +33,19 @@ public class RegistrationFormWithPageObjectsTests {
                 .uploadUserPicture("img/1.png")
                 .setUserCurrentAddress("Some address 1")
                 .setStateAndCity("NCR", "Delhi")
-                .submitForm();
+                .submitForm()
+                .checkResultsTableIsVisible()
+                .checkResultsInTable("State and City", "NCR Delhi")
+                .checkResultsInTable("Student Name", "Alex Egorov")
+                .checkResultsInTable("Gender", "Other")
+                .checkResultsInTable("Mobile", "1234567890")
+                .checkResultsInTable("Date of Birth", "30 December,2000")
+                .checkResultsInTable("Subjects", "Maths")
+                .checkResultsInTable("Hobbies", "Sports")
+                .checkResultsInTable("Picture", "1.png")
+                .checkResultsInTable("Address", "Some address 1")
+                .checkResultsInTable("State and City", "NCR Delhi");
 
-        $(".modal-dialog").should(appear);
-        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
 
         $(".table-responsive table").shouldHave(text("Alex"), text("Egorov"),
                 text("AlexEgorov@mail.com"), text("1234567890"));
@@ -49,12 +58,11 @@ public class RegistrationFormWithPageObjectsTests {
                 .setLastName("Egorov")
                 .setUserGender("Other")
                 .setUserNumber("1234567890")
-                .submitForm();
-
-        $(".modal-dialog").should(appear);
-        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-
-        $(".table-responsive table").shouldHave(text("Alex"), text("Egorov"), text("1234567890"));
+                .submitForm()
+                .checkResultsTableIsVisible()
+                .checkResultsInTable("Student Name", "Alex Egorov")
+                .checkResultsInTable("Gender", "Other")
+                .checkResultsInTable("Mobile", "1234567890");
     }
 
 }

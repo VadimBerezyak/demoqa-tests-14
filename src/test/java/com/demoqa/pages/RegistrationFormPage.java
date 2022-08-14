@@ -2,6 +2,7 @@ package com.demoqa.pages;
 
 import com.codeborne.selenide.SelenideElement;
 import com.demoqa.pages.components.CalendarComponent;
+import com.demoqa.pages.components.ResultsTableComponent;
 import com.demoqa.pages.components.StateAndCityComponent;
 
 import static com.codeborne.selenide.Condition.text;
@@ -11,12 +12,13 @@ import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class RegistrationFormPage {
 
-    private CalendarComponent calendarCompanent = new CalendarComponent();
-    private  StateAndCityComponent stateAndCityComponent =  new StateAndCityComponent();
+    private CalendarComponent calendarComponent = new CalendarComponent();
+    private StateAndCityComponent stateAndCityComponent = new StateAndCityComponent();
+    private ResultsTableComponent resultsTableComponent = new ResultsTableComponent();
 
     private SelenideElement firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
-            userEmailInput = $("#firstName"),
+            userEmailInput = $("#userEmail"),
             userGenderInput = $("#genterWrapper"),
             userNumberInput = $("#userNumber"),
             userSubjectInput = $("#subjectsInput"),
@@ -28,10 +30,11 @@ public class RegistrationFormPage {
             userCity = $("#city"),
             submitButton = $("#submit");
 
+    private static final String TITLE_TEXT = "Student Registration Form";
 
     public RegistrationFormPage openPage() {
         open("/automation-practice-form");
-        $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
+        $(".practice-form-wrapper").shouldHave(text(TITLE_TEXT));
         executeJavaScript("$('footer').remove()");
         executeJavaScript("$('#fixedban').remove()");
         return this;
@@ -89,13 +92,13 @@ public class RegistrationFormPage {
 
     public RegistrationFormPage setBirthDate(String day, String month, String year) {
         $("#dateOfBirthInput").click();
-        calendarCompanent.setDate(day, month, year);
+        calendarComponent.setDate(day, month, year);
         return this;
     }
 
-      public RegistrationFormPage setStateAndCity(String state, String city) {
-          stateAndCityComponent.setStateWithCity("NCR", "Delhi");
-          return this;
+    public RegistrationFormPage setStateAndCity(String state, String city) {
+        stateAndCityComponent.setStateWithCity("NCR", "Delhi");
+        return this;
     }
 
 
@@ -103,6 +106,17 @@ public class RegistrationFormPage {
         submitButton.click();
         return this;
     }
+
+    public RegistrationFormPage checkResultsTableIsVisible() {
+        resultsTableComponent.checkVisible();
+        return this;
+    }
+
+    public RegistrationFormPage checkResultsInTable(String key, String value) {
+        resultsTableComponent.checkResult(key, value);
+        return this;
+    }
+
 
 
 }
