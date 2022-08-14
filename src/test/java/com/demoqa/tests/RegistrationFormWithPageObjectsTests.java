@@ -32,8 +32,7 @@ public class RegistrationFormWithPageObjectsTests {
                 .setUserHobbies("Sports")
                 .uploadUserPicture("img/1.png")
                 .setUserCurrentAddress("Some address 1")
-                .setUserState("NCR")
-                .setUserCity("Delhi")
+                .setStateAndCity("NCR", "Delhi")
                 .submitForm();
 
         $(".modal-dialog").should(appear);

@@ -2,6 +2,7 @@ package com.demoqa.pages;
 
 import com.codeborne.selenide.SelenideElement;
 import com.demoqa.pages.components.CalendarComponent;
+import com.demoqa.pages.components.StateAndCityComponent;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -11,6 +12,7 @@ import static com.codeborne.selenide.Selenide.executeJavaScript;
 public class RegistrationFormPage {
 
     private CalendarComponent calendarCompanent = new CalendarComponent();
+    private  StateAndCityComponent stateAndCityComponent =  new StateAndCityComponent();
 
     private SelenideElement firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
@@ -20,12 +22,11 @@ public class RegistrationFormPage {
             userSubjectInput = $("#subjectsInput"),
             userHobbiesInput = $("#hobbiesWrapper"),
             userPictureInput = $("#uploadPicture"),
-            userCurrentAddressInput =  $("#currentAddress"),
+            userCurrentAddressInput = $("#currentAddress"),
             userStateInput = $("#state"),
             userStateCity = $("#stateCity-wrapper"),
             userCity = $("#city"),
             submitButton = $("#submit");
-
 
 
     public RegistrationFormPage openPage() {
@@ -82,7 +83,7 @@ public class RegistrationFormPage {
     }
 
     public RegistrationFormPage setUserCurrentAddress(String value) {
-       userCurrentAddressInput.setValue(value);
+        userCurrentAddressInput.setValue(value);
         return this;
     }
 
@@ -92,21 +93,15 @@ public class RegistrationFormPage {
         return this;
     }
 
-   public RegistrationFormPage setUserState(String value) {
-       userStateInput.click();
-       userStateCity.$(byText(value)).click();
-        return this;
+      public RegistrationFormPage setStateAndCity(String state, String city) {
+          stateAndCityComponent.setStateWithCity("NCR", "Delhi");
+          return this;
     }
 
-  public RegistrationFormPage setUserCity(String value) {
-      userCity.click();
-       userStateCity.$(byText(value)).click();
-        return this;
-    }
 
-  public RegistrationFormPage submitForm() {
-      submitButton.click();
-      return this;
+    public RegistrationFormPage submitForm() {
+        submitButton.click();
+        return this;
     }
 
 
