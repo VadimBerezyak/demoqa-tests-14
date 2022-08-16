@@ -20,6 +20,7 @@ public class RegistrationFormWithTestDataTests extends TestBase {
             subject,
             hobbies,
             picturePath,
+            pictureName,
             currentAddress,
             state,
             city,
@@ -30,24 +31,25 @@ public class RegistrationFormWithTestDataTests extends TestBase {
             expectedDateOfBirth;
 
     @BeforeEach
-    void prepareTestData(){
-                firstName = "Alex";
-                lastName = "Egorov";
-                expectedFullName = format("%s %s", firstName, lastName);
-                email = "AlexEgorov@mail.com";
-                gender = "Male";
-                mobile = "1234567890";
-                subject = "Math";
-                hobbies = "Sport";
-                picturePath = "img/1.png";
-                currentAddress = "Some address 1";
-                state = "NCR";
-                city = "Delhi";
-                expectedStateCityAddress = format("%s %s", state, city);
-                day = "30";
-                month = "January";
-                year = "2000";
-                expectedDateOfBirth = format("%s %s,%s", day, month, year);
+    void prepareTestData() {
+        firstName = "Alex";
+        lastName = "Egorov";
+        expectedFullName = format("%s %s", firstName, lastName);
+        email = "AlexEgorov@mail.com";
+        gender = "Male";
+        mobile = "1234567890";
+        subject = "Math";
+        hobbies = "Sports";
+        picturePath = "img/1.png";
+        pictureName = "1.png";
+        currentAddress = "Some address 1";
+        state = "NCR";
+        city = "Delhi";
+        expectedStateCityAddress = format("%s %s", state, city);
+        day = "30";
+        month = "January";
+        year = "2000";
+        expectedDateOfBirth = format("%s %s,%s", day, month, year);
     }
 
     @Test
@@ -73,7 +75,7 @@ public class RegistrationFormWithTestDataTests extends TestBase {
                 .checkResultsInTable("Date of Birth", expectedDateOfBirth)
                 .checkResultsInTable("Subjects", subject)
                 .checkResultsInTable("Hobbies", hobbies)
-                .checkResultsInTable("Picture", picturePath)
+                .checkResultsInTable("Picture", pictureName)
                 .checkResultsInTable("Address", currentAddress);
     }
 
