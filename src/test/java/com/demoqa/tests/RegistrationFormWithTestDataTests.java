@@ -5,52 +5,14 @@ import com.demoqa.pages.components.ResultsTableComponent;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static com.demoqa.tests.TestData.*;
 import static java.lang.String.format;
 
 public class RegistrationFormWithTestDataTests extends TestBase {
     RegistrationFormPage registrationFormPage = new RegistrationFormPage();
     ResultsTableComponent resultsTableComponent = new ResultsTableComponent();
 
-    String firstName,
-            lastName,
-            expectedFullName,
-            email,
-            gender,
-            mobile,
-            subject,
-            hobbies,
-            picturePath,
-            pictureName,
-            currentAddress,
-            state,
-            city,
-            expectedStateCityAddress,
-            day,
-            month,
-            year,
-            expectedDateOfBirth;
 
-    @BeforeEach
-    void prepareTestData() {
-        firstName = "Alex";
-        lastName = "Egorov";
-        expectedFullName = format("%s %s", firstName, lastName);
-        email = "AlexEgorov@mail.com";
-        gender = "Male";
-        mobile = "1234567890";
-        subject = "Math";
-        hobbies = "Sports";
-        picturePath = "img/1.png";
-        pictureName = "1.png";
-        currentAddress = "Some address 1";
-        state = "NCR";
-        city = "Delhi";
-        expectedStateCityAddress = format("%s %s", state, city);
-        day = "30";
-        month = "January";
-        year = "2000";
-        expectedDateOfBirth = format("%s %s,%s", day, month, year);
-    }
 
     @Test
     void fillFormTest() {

@@ -10,4 +10,5 @@ public class TestBase {
         Configuration.browserSize = "1920x1080";
     }
 
+
 }
