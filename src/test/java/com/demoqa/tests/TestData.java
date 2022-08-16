@@ -2,6 +2,8 @@ package com.demoqa.tests;
 
 import org.junit.jupiter.api.BeforeEach;
 
+import java.util.Random;
+
 import static java.lang.String.format;
 
 public class TestData {
@@ -23,7 +25,4 @@ public class TestData {
             month = "January",
             year = "2000",
             expectedDateOfBirth = format("%s %s,%s", day, month, year);
-
-
-
 }
