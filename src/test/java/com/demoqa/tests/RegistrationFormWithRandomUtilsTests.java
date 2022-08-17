@@ -44,13 +44,13 @@ public class RegistrationFormWithRandomUtilsTests extends TestBase {
         hobbies = RandomUtils.getRandomHobbies();
         picturePath = "img/1.png";
         pictureName = "1.png";
-        currentAddress = "Some address 1";
-        state = "NCR";
-        city = "Delhi";
+        currentAddress = RandomUtils.getRandomAddress();
+        state = RandomUtils.getRandomState();
+        city = RandomUtils.getRandomCityFromState(state);
         expectedStateCityAddress = format("%s %s", state, city);
         day = "30";
-        month = "January";
-        year = "2000";
+        month = RandomUtils.getRandomMonthOfBirth();
+        year = RandomUtils.getRandomYearOfBirth();
         expectedDateOfBirth = format("%s %s,%s", day, month, year);
     }
 

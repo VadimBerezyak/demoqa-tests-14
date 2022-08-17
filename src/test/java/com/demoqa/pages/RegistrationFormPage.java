@@ -25,10 +25,11 @@ public class RegistrationFormPage {
             userHobbiesInput = $("#hobbiesWrapper"),
             userPictureInput = $("#uploadPicture"),
             userCurrentAddressInput = $("#currentAddress"),
-    //            userStateInput = $("#state"),
-//            userStateCity = $("#stateCity-wrapper"),
-//            userCity = $("#city"),
-    submitButton = $("#submit");
+            submitButton = $("#submit");
+//          userStateInput = $("#state"),
+//          userStateCity = $("#stateCity-wrapper"),
+//          userCity = $("#city"),
+
 
     private static final String TITLE_TEXT = "Student Registration Form";
 
@@ -97,7 +98,7 @@ public class RegistrationFormPage {
     }
 
     public RegistrationFormPage setStateAndCity(String state, String city) {
-        stateAndCityComponent.setStateWithCity("NCR", "Delhi");
+        stateAndCityComponent.setStateWithCity(state, city);
         return this;
     }
 

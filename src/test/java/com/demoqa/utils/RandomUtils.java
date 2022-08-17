@@ -8,7 +8,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class RandomUtils {
 
     public static String getRandomStringFromStas(int length) {
-        String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 ";
         StringBuilder result = new StringBuilder();
         Random rnd = new Random();
         while (result.length() < length) {
@@ -38,9 +38,9 @@ public class RandomUtils {
     public static String getRandomStringFromArray(String[] array) {
         Random ran = new Random();
         String randomValue = "";
-        int value = ran.nextInt(array.length+1);
+        int value = ran.nextInt(array.length + 1);
         for (int i = 0; i < array.length; i++) {
-            if(value == i){
+            if (value == i) {
                 randomValue = array[i];
             }
         }
@@ -54,9 +54,47 @@ public class RandomUtils {
     public static String getRandomGender() {
         return getRandomStringFromArray(new String[]{"Male", "Female", "Other"});
     }
+
     public static String getRandomSubject() {
-        return getRandomStringFromArray(new String[]{"English", "Chemistry","Computer Science", "Arts","History", "Maths",
-                "Accounting", "Social Studies", "Social Studies","Physics","Biology","Hindi","Economics", "Civics"});
+        return getRandomStringFromArray(new String[]{"English", "Chemistry", "Computer Science", "Arts", "History", "Maths",
+                "Accounting", "Social Studies", "Social Studies", "Physics", "Biology", "Hindi", "Economics", "Civics"});
+    }
+
+    public static String getRandomAddress() {
+        return getRandomStringFromStas(100);
+    }
+
+    public static String getRandomState() {
+        return getRandomStringFromArray(new String[]{"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"});
+    }
+
+    public static String getRandomCityFromState(String state) {
+        String city = "";
+        switch (state) {
+            case "NCR":
+                city = getRandomStringFromArray(new String[]{"Delhi", "Gurgaon", "Noida"});
+                break;
+            case "Uttar Pradesh":
+                city = getRandomStringFromArray(new String[]{"Agra", "Lucknow", "Merrut"});
+                break;
+            case "Haryana":
+                city = getRandomStringFromArray(new String[]{"Karnal", "Panipat"});
+                break;
+            case "Rajasthan":
+                city = getRandomStringFromArray(new String[]{"Jaipur", "Jaiselmer"});
+                break;
+            default:
+                break;
+        }
+        return city;
+    }
+
+    public static String getRandomYearOfBirth() {
+        return getRandomLong(1900L, 2100L) + "";
+    }
+    public static String getRandomMonthOfBirth () {
+        return getRandomStringFromArray(new String[]{"January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"});
     }
 
 }
