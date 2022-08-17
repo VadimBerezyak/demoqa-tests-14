@@ -31,11 +31,29 @@ public class RandomUtils {
         return ThreadLocalRandom.current().nextLong(min, max);
     }
 
-    public static String getRandomMobile(){
+    public static String getRandomMobile() {
         return getRandomLong(1111111111L, 9999999999L) + "";
     }
 
+    public static String getRandomStringFromArray(String[] array) {
+        Random ran = new Random();
+        String randomValue = "";
+        int value = ran.nextInt(array.length+1);
+        for (int i = 0; i < array.length; i++) {
+            if(value == i){
+                randomValue = array[i];
+            }
+        }
+        return randomValue;
+    }
+
+    public static String getRandomHobbies() {
+        return getRandomStringFromArray(new String[]{"Sports", "Reading", "Music"});
+    }
+
+    public static String getRandomGender() {
+        return getRandomStringFromArray(new String[]{"Male", "Female", "Other"});
+    }
+
 }
-
-
 

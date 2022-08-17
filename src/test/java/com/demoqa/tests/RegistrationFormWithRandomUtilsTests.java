@@ -38,10 +38,10 @@ public class RegistrationFormWithRandomUtilsTests extends TestBase {
         lastName = RandomUtils.getRandomStringAlternative(10);
         expectedFullName = format("%s %s", firstName, lastName);
         email = RandomUtils.getRandomEmail();
-        gender = "Male";
+        gender = RandomUtils.getRandomGender();
         mobile = RandomUtils.getRandomMobile();
         subject = "Math";
-        hobbies = "Sports";
+        hobbies = RandomUtils.getRandomHobbies();
         picturePath = "img/1.png";
         pictureName = "1.png";
         currentAddress = "Some address 1";
