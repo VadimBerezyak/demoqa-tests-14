@@ -54,6 +54,10 @@ public class RandomUtils {
     public static String getRandomGender() {
         return getRandomStringFromArray(new String[]{"Male", "Female", "Other"});
     }
+    public static String getRandomSubject() {
+        return getRandomStringFromArray(new String[]{"English", "Chemistry","Computer Science", "Arts","History", "Maths",
+                "Accounting", "Social Studies", "Social Studies","Physics","Biology","Hindi","Economics", "Civics"});
+    }
 
 }
 

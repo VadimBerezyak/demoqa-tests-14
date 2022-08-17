@@ -40,7 +40,7 @@ public class RegistrationFormWithRandomUtilsTests extends TestBase {
         email = RandomUtils.getRandomEmail();
         gender = RandomUtils.getRandomGender();
         mobile = RandomUtils.getRandomMobile();
-        subject = "Math";
+        subject = RandomUtils.getRandomSubject();
         hobbies = RandomUtils.getRandomHobbies();
         picturePath = "img/1.png";
         pictureName = "1.png";
