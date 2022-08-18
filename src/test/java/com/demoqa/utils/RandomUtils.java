@@ -38,7 +38,7 @@ public class RandomUtils {
     public static String getRandomStringFromArray(String[] array) {
         Random ran = new Random();
         String randomValue = "";
-        int value = ran.nextInt(array.length + 1);
+        int value = ran.nextInt(array.length);
         for (int i = 0; i < array.length; i++) {
             if (value == i) {
                 randomValue = array[i];
@@ -110,25 +110,28 @@ public class RandomUtils {
         if (month.equals("February")) {
 
             if (Integer.parseInt(year) % 4 == 0 && !(Integer.parseInt(year) % 400 == 0)) {
-                randomDay = getRandomLong(0L, 28L) + "";
+                randomDay = getRandomLong(1L, 28L) + "";
             } else {
-                randomDay = getRandomLong(0L, 29L) + "";
+                randomDay = getRandomLong(1L, 29L) + "";
             }
         } else {
 
             for (String x : monthWith30days) {
                 if (x.equals(month)) {
-                    randomDay = getRandomLong(0L, 30L) + "";
+                    randomDay = getRandomLong(1L, 30L) + "";
                     break;
                 }
             }
             for (String y : monthWith31days) {
                 if (y.equals(month)) {
-                    randomDay = getRandomLong(0L, 31L) + "";
+                    randomDay = getRandomLong(1L, 31L) + "";
                     break;
                 }
             }
 
+        }
+        if (Integer.parseInt(randomDay) < 10) {
+            randomDay = "0" + randomDay;
         }
         return randomDay;
     }

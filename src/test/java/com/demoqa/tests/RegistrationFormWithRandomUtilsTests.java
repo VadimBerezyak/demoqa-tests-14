@@ -1,5 +1,6 @@
 package com.demoqa.tests;
 
+import com.codeborne.selenide.Selenide;
 import com.demoqa.pages.RegistrationFormPage;
 import com.demoqa.pages.components.ResultsTableComponent;
 import com.demoqa.utils.RandomUtils;
@@ -33,6 +34,7 @@ public class RegistrationFormWithRandomUtilsTests extends TestBase {
             expectedDateOfBirth;
 
     @BeforeEach
+
     void randomTestData() {
         firstName = RandomUtils.getRandomStringFromStas(10);
         lastName = RandomUtils.getRandomStringAlternative(10);
