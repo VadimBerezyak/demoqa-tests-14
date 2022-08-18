@@ -48,9 +48,9 @@ public class RegistrationFormWithRandomUtilsTests extends TestBase {
         state = RandomUtils.getRandomState();
         city = RandomUtils.getRandomCityFromState(state);
         expectedStateCityAddress = format("%s %s", state, city);
-        day = "30";
         month = RandomUtils.getRandomMonthOfBirth();
         year = RandomUtils.getRandomYearOfBirth();
+        day = RandomUtils.getRandomDayOfBirth(month,year);
         expectedDateOfBirth = format("%s %s,%s", day, month, year);
     }
 

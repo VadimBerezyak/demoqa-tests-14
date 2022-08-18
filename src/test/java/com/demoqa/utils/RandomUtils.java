@@ -92,10 +92,45 @@ public class RandomUtils {
     public static String getRandomYearOfBirth() {
         return getRandomLong(1900L, 2100L) + "";
     }
-    public static String getRandomMonthOfBirth () {
+
+    public static String getRandomMonthOfBirth() {
         return getRandomStringFromArray(new String[]{"January", "February", "March", "April", "May", "June",
                 "July", "August", "September", "October", "November", "December"});
     }
 
+    public static String getRandomDayOfBirth(String month, String year) {
+
+        String randomDay = "";
+        String[] monthWith31days = new String[]{"January", "March", "May",
+                "July", "August", "October", "December"};
+        String[] monthWith30days = new String[]{"April", "June",
+                "September", "November"};
+        String[] arr = new String[]{"John", "Mark", "Joe", "Bill", "Connor"};
+        //
+        if (month.equals("February")) {
+
+            if (Integer.parseInt(year) % 4 == 0 && !(Integer.parseInt(year) % 400 == 0)) {
+                randomDay = getRandomLong(0L, 28L) + "";
+            } else {
+                randomDay = getRandomLong(0L, 29L) + "";
+            }
+        } else {
+
+            for (String x : monthWith30days) {
+                if (x.equals(month)) {
+                    randomDay = getRandomLong(0L, 30L) + "";
+                    break;
+                }
+            }
+            for (String y : monthWith31days) {
+                if (y.equals(month)) {
+                    randomDay = getRandomLong(0L, 31L) + "";
+                    break;
+                }
+            }
+
+        }
+        return randomDay;
+    }
 }
 
