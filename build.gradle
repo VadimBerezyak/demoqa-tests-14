@@ -5,6 +5,12 @@ plugins {
 repositories {
     mavenCentral()
 }
+compileJava {
+    options.encoding = 'UTF-8'
+}
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
 
 dependencies {
     testImplementation(
@@ -17,8 +23,4 @@ dependencies {
 
 test {
     useJUnitPlatform()
-}
-
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
 }

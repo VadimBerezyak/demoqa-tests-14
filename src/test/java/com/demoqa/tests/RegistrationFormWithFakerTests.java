@@ -5,6 +5,7 @@ import com.demoqa.pages.components.ResultsTableComponent;
 import com.demoqa.utils.RandomUtils;
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static java.lang.CharSequence.compare;
@@ -57,7 +58,6 @@ public class RegistrationFormWithFakerTests extends TestBase {
         day = RandomUtils.getRandomDayOfBirth(month,year);
         expectedDateOfBirth = format("%s %s,%s", day, month, year);
     }
-
     @Test
     void fillFormTest() {
         registrationFormPage.openPage()
