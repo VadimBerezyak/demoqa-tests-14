@@ -1,11 +1,14 @@
 package com.demoqa.utils;
 
+import com.demoqa.data.DataClass;
 import org.apache.commons.lang3.RandomStringUtils;
 
+import javax.xml.crypto.Data;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomUtils {
+
 
     public static String getRandomStringFromStas(int length) {
         String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 ";
@@ -48,16 +51,15 @@ public class RandomUtils {
     }
 
     public static String getRandomHobbies() {
-        return getRandomStringFromArray(new String[]{"Sports", "Reading", "Music"});
+        return getRandomStringFromArray(DataClass.hobbies);
     }
 
     public static String getRandomGender() {
-        return getRandomStringFromArray(new String[]{"Male", "Female", "Other"});
+        return getRandomStringFromArray(DataClass.gender);
     }
 
     public static String getRandomSubject() {
-        return getRandomStringFromArray(new String[]{"English", "Chemistry", "Computer Science", "Arts", "History", "Maths",
-                "Accounting", "Social Studies", "Social Studies", "Physics", "Biology", "Hindi", "Economics", "Civics"});
+        return getRandomStringFromArray(DataClass.subjects15);
     }
 
     public static String getRandomAddress() {
@@ -65,23 +67,23 @@ public class RandomUtils {
     }
 
     public static String getRandomState() {
-        return getRandomStringFromArray(new String[]{"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"});
+        return getRandomStringFromArray(DataClass.states);
     }
 
     public static String getRandomCityFromState(String state) {
         String city = "";
         switch (state) {
             case "NCR":
-                city = getRandomStringFromArray(new String[]{"Delhi", "Gurgaon", "Noida"});
+                city = getRandomStringFromArray(DataClass.citiesNCR);
                 break;
             case "Uttar Pradesh":
-                city = getRandomStringFromArray(new String[]{"Agra", "Lucknow", "Merrut"});
+                city = getRandomStringFromArray(DataClass.citiesPradesh);
                 break;
             case "Haryana":
-                city = getRandomStringFromArray(new String[]{"Karnal", "Panipat"});
+                city = getRandomStringFromArray(DataClass.citiesHaryana);
                 break;
             case "Rajasthan":
-                city = getRandomStringFromArray(new String[]{"Jaipur", "Jaiselmer"});
+                city = getRandomStringFromArray(DataClass.citiesRajasthan);
                 break;
             default:
                 break;

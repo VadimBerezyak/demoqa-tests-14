@@ -3,14 +3,18 @@ package com.demoqa.tests;
 import com.demoqa.pages.RegistrationFormPage;
 import com.demoqa.pages.components.ResultsTableComponent;
 import com.demoqa.utils.RandomUtils;
+import com.github.javafaker.Faker;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static java.lang.CharSequence.compare;
 import static java.lang.String.format;
 
 public class RegistrationFormWithFakerTests extends TestBase {
     RegistrationFormPage registrationFormPage = new RegistrationFormPage();
     ResultsTableComponent resultsTableComponent = new ResultsTableComponent();
+
+    Faker faker = new Faker();
 
     String firstName,
             lastName,
@@ -34,22 +38,22 @@ public class RegistrationFormWithFakerTests extends TestBase {
     @BeforeEach
 
     void randomTestData() {
-        firstName = RandomUtils.getRandomStringFromStas(10);
-        lastName = RandomUtils.getRandomStringAlternative(10);
+        firstName = faker.name().firstName();
+        lastName = faker.name().lastName();
         expectedFullName = format("%s %s", firstName, lastName);
-        email = RandomUtils.getRandomEmail();
+        email = faker.internet().emailAddress();
         gender = RandomUtils.getRandomGender();
-        mobile = RandomUtils.getRandomMobile();
+        mobile = faker.phoneNumber().subscriberNumber(10);
         subject = RandomUtils.getRandomSubject();
         hobbies = RandomUtils.getRandomHobbies();
         picturePath = "img/1.png";
         pictureName = "1.png";
-        currentAddress = RandomUtils.getRandomAddress();
+        currentAddress = faker.address().fullAddress();
         state = RandomUtils.getRandomState();
         city = RandomUtils.getRandomCityFromState(state);
         expectedStateCityAddress = format("%s %s", state, city);
         month = RandomUtils.getRandomMonthOfBirth();
-        year = RandomUtils.getRandomYearOfBirth();
+        year = faker.number().numberBetween(1900, 2100) + "";
         day = RandomUtils.getRandomDayOfBirth(month,year);
         expectedDateOfBirth = format("%s %s,%s", day, month, year);
     }
