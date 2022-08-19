@@ -19,4 +19,12 @@ public class DataClass {
         public static String[] subjects15 = {"English", "Chemistry", "Computer Science", "Arts", "History", "Maths",
                 "Accounting", "Social Studies", "Social Studies", "Physics", "Biology", "Hindi", "Economics", "Civics"};
 
+        public static String[] allMonths = {"January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"};
+
+        public static String[] monthWith31days = new String[]{"January", "March", "May",
+                "July", "August", "October", "December"};
+        public static String[] monthWith30days = new String[]{"April", "June",
+                "September", "November"};
+
 }

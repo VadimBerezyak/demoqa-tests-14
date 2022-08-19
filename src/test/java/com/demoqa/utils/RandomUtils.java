@@ -96,41 +96,31 @@ public class RandomUtils {
     }
 
     public static String getRandomMonthOfBirth() {
-        return getRandomStringFromArray(new String[]{"January", "February", "March", "April", "May", "June",
-                "July", "August", "September", "October", "November", "December"});
+        return getRandomStringFromArray(DataClass.allMonths);
     }
 
     public static String getRandomDayOfBirth(String month, String year) {
 
         String randomDay = "";
-        String[] monthWith31days = new String[]{"January", "March", "May",
-                "July", "August", "October", "December"};
-        String[] monthWith30days = new String[]{"April", "June",
-                "September", "November"};
-        String[] arr = new String[]{"John", "Mark", "Joe", "Bill", "Connor"};
-        //
         if (month.equals("February")) {
-
             if (Integer.parseInt(year) % 4 == 0 && !(Integer.parseInt(year) % 400 == 0)) {
                 randomDay = getRandomLong(1L, 28L) + "";
             } else {
                 randomDay = getRandomLong(1L, 29L) + "";
             }
         } else {
-
-            for (String x : monthWith30days) {
+            for (String x : DataClass.monthWith30days) {
                 if (x.equals(month)) {
                     randomDay = getRandomLong(1L, 30L) + "";
                     break;
                 }
             }
-            for (String y : monthWith31days) {
+            for (String y : DataClass.monthWith31days) {
                 if (y.equals(month)) {
                     randomDay = getRandomLong(1L, 31L) + "";
                     break;
                 }
             }
-
         }
         if (Integer.parseInt(randomDay) < 10) {
             randomDay = "0" + randomDay;
